@@ -7,8 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from .forms import IdeaForm
-import time
-
+from django.http import HttpResponseRedirect
 
 
 def home(request):
@@ -25,7 +24,8 @@ def home(request):
 
 @login_required(login_url='login')
 def myIdeas(request):
-    t1 = time.time()
+
+    form = IdeaForm()
     created_ideas = Idea.objects.filter(creator=request.user)
     participated_ideas = Idea.objects.filter(participants=request.user)
 
@@ -33,11 +33,15 @@ def myIdeas(request):
     for idea in participated_ideas:
         idea.user_already_vote = idea.participants.filter(pk=request.user.pk).exists()
 
+    for idea in created_ideas:
+        idea.user_already_vote = idea.participants.filter(pk=request.user.pk).exists()
+
     context = {
         'created_ideas': created_ideas,
         'participated_ideas': participated_ideas,
+        'form': form,
     }
-    print(time.time()-t1)
+
     return render(request, 'app/my_ideas.html', context)
 
 
@@ -54,7 +58,8 @@ def createIdea(request):
             idea.participants.add(request.user)
             idea.update_votes()
             idea.save()
-            return redirect('home')  
+            referer_url = request.META.get('HTTP_REFERER')
+            return HttpResponseRedirect(referer_url or 'home')
 
     return render(request, 'app/ideas/create_idea.html', {'form': form})
 
@@ -62,17 +67,19 @@ def createIdea(request):
 def voteIdea(request, pk):
     
     idea = get_object_or_404(Idea, id=pk)
+    referer_url = request.META.get('HTTP_REFERER')
 
     if request.user not in idea.participants.all():
         idea.participants.add(request.user)
         idea.update_votes()
         idea.save()
 
-    return redirect('home')
+    return HttpResponseRedirect(referer_url or 'home')
 
 @login_required(login_url='login')
 def unvoteIdea(request, pk):
     idea = get_object_or_404(Idea, pk=pk)
+    referer_url = request.META.get('HTTP_REFERER')
 
     if request.user in idea.participants.all():
         idea.participants.remove(request.user)
@@ -84,7 +91,7 @@ def unvoteIdea(request, pk):
             return redirect('home')
         idea.save()
 
-    return redirect('home')
+    return HttpResponseRedirect(referer_url or 'home')
 
 
 
