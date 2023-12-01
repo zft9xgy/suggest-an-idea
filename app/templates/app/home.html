@@ -21,7 +21,9 @@
   <div class="idea">
     <span class="idea-votes">{{idea.votes}}</span>
     <h3 class="idea-title">{{idea.title}}</h3>
-    <p class="idea-description">{{idea.description}}</p>
+    <p  class="idea-description">{{idea.description}}</p>
+    <p style="font-size: 13px;" class="idea-creation-date">Created:{{idea.created}}</p>
+    <p style="font-size: 13px;"class="idea-updated-date">Last vote: {{idea.updated}}</p>
     {% if request.user.is_authenticated %} {% if idea.user_already_vote %}
     <a href="{% url 'unvote-idea' idea.pk %}">Quitar voto.</a>
     {% else %}

@@ -10,7 +10,7 @@ With suggest an idea you can help to improve your favorite application and who k
 
 ## ALL / IDEAS
 
-- add search function
+- ~~add search function~~
 - add a function in admin panel to set that only registered users can vote and create ideas or that any user can use it.
 - add the function to be able to comment on each idea
 - add the function to be able to edit the idea and / or delete and that these are configurable from the admin panel.
@@ -19,6 +19,7 @@ With suggest an idea you can help to improve your favorite application and who k
 - add documentation and screenshot
 - add bootstrap style
 - add alert when unvote last vote from idea that the idea will be delete.
+- editor md dentro de la description de la idea
 
 ### ideas
 
