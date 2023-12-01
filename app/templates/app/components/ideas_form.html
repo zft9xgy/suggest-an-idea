@@ -1,0 +1,18 @@
+{% if request.user.is_authenticated %}
+<div class="idea-form">
+  <h3>Publish a new idea</h3>
+
+  <form method="post" action="{% url 'new-idea' %}">
+    {% csrf_token %}
+    {{ form.title }}
+    {{ form.description }}
+    <button class="idea-form-submit" type="submit">Publicar idea</button>
+  </form>
+</div>
+
+{% else %}
+
+<p>Only user can summit ideas.</p>
+<a href="{% url 'register' %}">Create an account today!</a>
+
+{% endif %}

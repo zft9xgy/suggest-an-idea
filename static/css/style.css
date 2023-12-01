@@ -1,0 +1,104 @@
+body{
+    font-family: sans-serif;
+    color: #1e1e1e;
+    background-color: #f5f5f5;
+}
+
+body p{
+    font-size: 18px;
+    line-height: 1.2em;
+}
+
+header{
+    max-width: 760px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+nav{
+    display: inline-block;
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+li{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+
+.hero{
+    text-align: center;
+    margin: auto;
+    max-width: 960px;
+}
+
+.ideas-feed{
+    max-width: 760px;
+    margin: auto;
+    border-radius: 10px;
+    padding: 50px;
+    display: flex;
+    flex-direction: row;    
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.idea{
+    border-radius: 5px;
+    border: 1px solid #c3c3c3;
+    background-color: white;
+    padding: 20px;
+    flex-grow: 1;
+    flex-basis: 100%;/* calc(30% - 10px);  33.333% para 3 elementos en una fila, ajusta según tus necesidades */
+
+}
+
+
+.idea-form{
+    margin: 0px auto;
+    max-width: 760px;
+    width: 760px;
+    padding: 20px;
+    background-color: white;
+    border:1px solid #c3c3c3;
+    border-radius: 10px;
+    }
+
+    .idea-form h3{
+        margin: 10px;
+    }
+
+  
+    .idea-form input,
+    .idea-form textarea{
+        width: 90%;
+        display: block;
+        border-radius: 10px;
+        border: 1px solid #c3c3c3;
+        padding: 10px;
+        background-color: white;
+        margin: 10px;
+    }
+  
+    .idea-form button{
+      background-color: white;
+      border: 1px solid #c3c3c3;
+      border-radius: 10px;
+      padding: 10px 50px;
+      margin: 10px;
+      width: 50%;
+      cursor: pointer;
+    }
+
+    .idea-form button:hover{
+        background-color: #989898;
+    }
+
+a,
+a:visited{
+    color: #1e1e1e;
+    text-decoration: underline;
+}
