@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from .forms import IdeaForm
+import time
 
 
 
@@ -24,15 +25,20 @@ def home(request):
 
 @login_required(login_url='login')
 def myIdeas(request):
-    
-    ideas = Idea.objects.filter(creator=request.user) 
-    user = request.user
+    t1 = time.time()
+    created_ideas = Idea.objects.filter(creator=request.user)
+    participated_ideas = Idea.objects.filter(participants=request.user)
 
-    for idea in ideas:
-        idea.user_already_vote = idea.participants.filter(pk=user.pk).exists()
+    # Marcar si el usuario ya ha votado por cada idea
+    for idea in participated_ideas:
+        idea.user_already_vote = idea.participants.filter(pk=request.user.pk).exists()
 
-    context = {'ideas':ideas}
-    return render(request,'app/my_ideas.html',context)
+    context = {
+        'created_ideas': created_ideas,
+        'participated_ideas': participated_ideas,
+    }
+    print(time.time()-t1)
+    return render(request, 'app/my_ideas.html', context)
 
 
 

@@ -18,5 +18,10 @@ With suggest an idea you can help to improve your favorite application and who k
 - deploy first app in heroku
 - add documentation and screenshot
 - add bootstrap style
+- add alert when unvote last vote from idea that the idea will be delete.
+
+### ideas
+
+- si ha pasado x tiempo, por ejemplo 3 meses y la idea no ha sido votado, la idea se elimina de la base de datos.
 
 **Note:** This project is an open-source initiative aimed at fostering collaboration between users and developers. Feel free to contribute, report issues, or suggest improvements.
