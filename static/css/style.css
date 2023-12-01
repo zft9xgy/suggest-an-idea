@@ -16,27 +16,33 @@ header{
     text-align: center;
 }
 
-nav{
+.idea-menu{
     display: inline-block;
-    margin-right: 10px;
+    margin: 10px;
     font-weight: 600;
 }
 
-li{
+.idea-menu a{
     display: inline-block;
     margin-right: 10px;
 }
 
+.hero,
+.idea-login,
+.ideas-feed,
+.idea-form{
+    margin: 20px auto;
+    max-width: 800px;
+}
 
 .hero{
     text-align: center;
-    margin: auto;
-    max-width: 960px;
 }
 
+
+
 .ideas-feed{
-    max-width: 760px;
-    margin: auto;
+    text-align: left;
     border-radius: 10px;
     padding: 50px;
     display: flex;
@@ -59,7 +65,6 @@ li{
 
 .idea-form{
     margin: 0px auto;
-    max-width: 760px;
     width: 760px;
     padding: 20px;
     background-color: white;

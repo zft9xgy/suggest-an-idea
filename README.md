@@ -17,5 +17,6 @@ With suggest an idea you can help to improve your favorite application and who k
 - add sections with the apps and services to be able to comment under them
 - deploy first app in heroku
 - add documentation and screenshot
+- add bootstrap style
 
 **Note:** This project is an open-source initiative aimed at fostering collaboration between users and developers. Feel free to contribute, report issues, or suggest improvements.

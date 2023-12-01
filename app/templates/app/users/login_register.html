@@ -1,9 +1,8 @@
 {% extends 'app/base.html' %}
 
 {% block content %}
-
+<div class="idea-login">
 {% if page == 'login' %}
-<div>
     <form action="" method="POST">
        {% csrf_token %} 
         <label>Username</label>
@@ -14,9 +13,7 @@
     </form>
     <p>¿Aun no tienes una cuenta?</p>
     <a href="{% url 'register' %}">Crear cuenta</a>
-</div>
 {% elif page == 'register' %}
-<div>
     <form action="" method="POST">
        {% csrf_token %} 
        {{ form }}
@@ -24,7 +21,7 @@
     </form>
     <p>¿Ya estas registrado?</p>
     <a href="{% url 'login' %}">Iniciar sesion</a>
-</div>
 {% endif %}
+</div>
 
 {% endblock %}
