@@ -13,6 +13,8 @@
   </p>
 </div>
 
+{% include 'app/components/search_bar.html' %}
+
 <div class="ideas-feed">
   {% for idea in ideas %}
 
@@ -29,7 +31,8 @@
     <a href="{% url 'register' %}">Register</a>
     {% endif %}
   </div>
-  {% endfor %} {% include 'app/components/ideas_form.html' %}
+  {% endfor %} 
+  {% include 'app/components/ideas_form.html' %}
 </div>
 
 {% endblock %}

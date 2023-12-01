@@ -8,11 +8,18 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from .forms import IdeaForm
 from django.http import HttpResponseRedirect
+from django.db.models import Q
 
 
 def home(request):
+    search = request.GET.get('search') if request.GET.get('search') != None else ''
     
-    ideas = Idea.objects.all() 
+    
+    ideas = Idea.objects.filter(
+        Q(title__icontains=search) |
+        Q(description__icontains=search)
+        )
+    #ideas = Idea.objects.all() 
     form = IdeaForm()
     user = request.user
 

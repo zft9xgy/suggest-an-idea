@@ -30,7 +30,8 @@ header{
 .hero,
 .idea-login,
 .ideas-feed,
-.idea-form{
+.idea-form,
+.idea-search-bar{
     margin: 20px auto;
     max-width: 800px;
 }
@@ -38,6 +39,20 @@ header{
 .hero{
     text-align: center;
 }
+
+
+.idea-search-bar{
+}
+
+#idea-search-bar-input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #c3c3c3;
+    border-radius: 10px;
+}
+
+
+
 
 
 
