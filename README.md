@@ -15,5 +15,7 @@ With suggest an idea you can help to improve your favorite application and who k
 - add the function to be able to comment on each idea
 - add the function to be able to edit the idea and / or delete and that these are configurable from the admin panel.
 - add sections with the apps and services to be able to comment under them
+- deploy first app in heroku
+- add documentation and screenshot
 
 **Note:** This project is an open-source initiative aimed at fostering collaboration between users and developers. Feel free to contribute, report issues, or suggest improvements.
