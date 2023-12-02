@@ -16,6 +16,7 @@
 {% include 'app/components/search_bar.html' %}
 
 <div class="ideas-feed">
+  {% if ideas %}
   {% for idea in ideas %}
 
   <div class="idea">
@@ -34,6 +35,11 @@
     {% endif %}
   </div>
   {% endfor %} 
+  {% else %}
+  <div class="ideas-empty">
+    <p>No hay ideas que mostrar</p>
+  </div>
+  {% endif %} 
   {% include 'app/components/ideas_form.html' %}
 </div>
 

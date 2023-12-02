@@ -31,7 +31,9 @@ header{
 .idea-login,
 .ideas-feed,
 .idea-form,
-.idea-search-bar{
+.idea-search-bar,
+.idea-create-an-account,
+.ideas-empty{
     margin: 20px auto;
     max-width: 800px;
 }
@@ -41,9 +43,6 @@ header{
 }
 
 
-.idea-search-bar{
-}
-
 #idea-search-bar-input{
     width: 100%;
     padding: 10px;
@@ -51,6 +50,10 @@ header{
     border-radius: 10px;
 }
 
+
+.idea-create-an-account{
+    text-align: center;
+}
 
 
 
