@@ -26,3 +26,31 @@ With suggest an idea you can help to improve your favorite application and who k
 - si ha pasado x tiempo, por ejemplo 3 meses y la idea no ha sido votado, la idea se elimina de la base de datos.
 
 **Note:** This project is an open-source initiative aimed at fostering collaboration between users and developers. Feel free to contribute, report issues, or suggest improvements.
+
+## use case
+
+usuarios:
+apps/servicios (name,description,website)
+ideas
+
+Entiendase app como la app a la que se le va sugerir la idea.
+Ejemplo:
+app: todoist
+idea: create a calendar view
+
+## user
+
+El usuario puede crear tantas ideas como quiera
+una vez publicada la idea no se puede modificar por el usuario o alternativamente, solo se podrá editar en menos de 1 dia, por ejemplo. Una vez pasado ese tiempo, no se puede editar.
+Un usuario puede votar tantas ideas como quiera.
+
+El usuario podrá crear apps/servicios y este deberá ser unico por nombre.
+El usuario no podrá eliminar la app
+El usuario no podrá editar la app
+Se podrá pedir la eliminación o modificación al administrador.
+
+### ideas
+
+Cada idea tiene que ir asignada a una app o servicio
+Una idea solo será eliminada cuando se quede sin votantes.
+Una idea puede ser votada, "desvotada"

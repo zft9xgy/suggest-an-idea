@@ -24,7 +24,7 @@ def home(request):
     user = request.user
 
     for idea in ideas:
-        idea.user_already_vote = idea.participants.filter(pk=user.pk).exists()
+        idea.user_already_vote = idea.voters.filter(pk=user.pk).exists()
 
     context = {'ideas':ideas,'form':form}
     return render(request,'app/home.html',context)
@@ -34,14 +34,14 @@ def myIdeas(request):
 
     form = IdeaForm()
     created_ideas = Idea.objects.filter(creator=request.user)
-    participated_ideas = Idea.objects.filter(participants=request.user)
+    participated_ideas = Idea.objects.filter(voters=request.user)
 
     # Marcar si el usuario ya ha votado por cada idea
     for idea in participated_ideas:
-        idea.user_already_vote = idea.participants.filter(pk=request.user.pk).exists()
+        idea.user_already_vote = idea.voters.filter(pk=request.user.pk).exists()
 
     for idea in created_ideas:
-        idea.user_already_vote = idea.participants.filter(pk=request.user.pk).exists()
+        idea.user_already_vote = idea.voters.filter(pk=request.user.pk).exists()
 
     context = {
         'created_ideas': created_ideas,
@@ -62,7 +62,7 @@ def createIdea(request):
             idea = form.save(commit=False)
             idea.creator = request.user  
             idea.save()
-            idea.participants.add(request.user)
+            idea.voters.add(request.user)
             idea.update_votes()
             idea.save()
             referer_url = request.META.get('HTTP_REFERER')
@@ -76,8 +76,8 @@ def voteIdea(request, pk):
     idea = get_object_or_404(Idea, id=pk)
     referer_url = request.META.get('HTTP_REFERER')
 
-    if request.user not in idea.participants.all():
-        idea.participants.add(request.user)
+    if request.user not in idea.voters.all():
+        idea.voters.add(request.user)
         idea.update_votes()
         idea.save()
 
@@ -88,8 +88,8 @@ def unvoteIdea(request, pk):
     idea = get_object_or_404(Idea, pk=pk)
     referer_url = request.META.get('HTTP_REFERER')
 
-    if request.user in idea.participants.all():
-        idea.participants.remove(request.user)
+    if request.user in idea.voters.all():
+        idea.voters.remove(request.user)
         idea.update_votes()
         print(idea.votes)
         print(type(idea.votes))
