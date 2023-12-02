@@ -1,19 +1,18 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
-from .models import Idea
+from .models import Idea, App
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from .forms import IdeaForm
+from .forms import IdeaForm, AppForm
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 
 
 def home(request):
     search = request.GET.get('search') if request.GET.get('search') != None else ''
-    
     
     ideas = Idea.objects.filter(
         Q(title__icontains=search) |
@@ -28,6 +27,14 @@ def home(request):
 
     context = {'ideas':ideas,'form':form}
     return render(request,'app/home.html',context)
+
+def apps(request):
+
+    apps = App.objects.all()
+    form = AppForm()
+
+    context = {'apps':apps,'form':form}
+    return render(request,'app/apps.html',context)
 
 @login_required(login_url='login')
 def myIdeas(request):
@@ -150,3 +157,20 @@ def registerPage(request):
 def logoutPage(request):
     logout(request)
     return redirect('home')
+
+
+# app CRUD
+
+@login_required(login_url='login')
+def createApp(request):
+    form = AppForm()
+    if request.method == 'POST':
+        form = AppForm(request.POST)
+        if form.is_valid():
+            app = form.save(commit=False)
+            app.creator = request.user  
+            app.save()
+            referer_url = request.META.get('HTTP_REFERER')
+            return HttpResponseRedirect(referer_url or 'home')
+
+    return render(request, 'app/components/apps_form.html', {'form': form})
