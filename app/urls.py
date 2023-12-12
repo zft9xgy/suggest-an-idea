@@ -2,7 +2,6 @@ from django.urls import path
 from .views import main_views
 from .views import app_views
 
-
 urlpatterns = [
     path('',main_views.home,name='home'),
     path('my-ideas/',main_views.myIdeas,name='my-ideas'),
@@ -15,5 +14,5 @@ urlpatterns = [
     path('unvote-idea/<int:pk>/',main_views.unvoteIdea,name='unvote-idea'),
     path('unvote-idea/<int:pk>/',main_views.unvoteIdea,name='unvote-idea'),
 
-    path('apps',app_views.apps,name='apps'),
+    path('apps',app_views.IndexView.as_view(),name='apps'),
 ]

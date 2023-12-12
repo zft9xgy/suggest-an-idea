@@ -9,12 +9,15 @@ from django.contrib.auth import authenticate, login, logout
 from app.forms import IdeaForm, AppForm
 from django.http import HttpResponseRedirect
 from django.db.models import Q
+from django.urls import reverse
+from django.views import generic
 
 
-def apps(request):
 
-    apps = App.objects.all()
-    form = AppForm()
+class IndexView(generic.ListView):
+    template_name = "app/apps/apps.html"
+    context_object_name = "apps"
 
-    context = {'apps':apps,'form':form}
-    return render(request,'app/apps/apps.html',context)
+    def get_queryset(self):
+        """Return the last five published questions."""
+        return App.objects.order_by("-created")[:5]
