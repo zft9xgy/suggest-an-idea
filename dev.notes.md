@@ -14,3 +14,10 @@ pagina principal:
 - publish your app or service and let he user suggest you ideas.
 
 dentro de cada app poder publicar las ideas.
+
+## todo
+
+- añadir vista para apps
+  -- añadir vista
+  -- añadir url
+  -- añadir plantilla
