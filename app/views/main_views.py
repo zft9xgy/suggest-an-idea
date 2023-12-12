@@ -28,13 +28,13 @@ def home(request):
     context = {'ideas':ideas,'form':form}
     return render(request,'app/home.html',context)
 
-def apps(request):
+# def apps(request):
 
-    apps = App.objects.all()
-    form = AppForm()
+#     apps = App.objects.all()
+#     form = AppForm()
 
-    context = {'apps':apps,'form':form}
-    return render(request,'app/apps.html',context)
+#     context = {'apps':apps,'form':form}
+#     return render(request,'app/apps.html',context)
 
 @login_required(login_url='login')
 def myIdeas(request):

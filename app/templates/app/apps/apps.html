@@ -9,29 +9,23 @@
     usar este plugin de multiples maneras, aunque la idea con la que fue
     desarrollada fue la de proporcionar a los usuarios proponer ideas y mejoras.
     Este paquete de django ha sido desarrollado por
-    <a target="blank" href="https://github.com/zft9xgy/suggest-an-idea">zft9xgy</a> y es
-    open-source.
+    <a target="blank" href="https://github.com/zft9xgy/suggest-an-idea"
+      >zft9xgy</a
+    >
+    y es open-source.
   </p>
   {% endif %}
 </div>
 
 <div class="apps-feed">
-  {% if apps %}
-
-
-  {% for app in apps %}
+  {% if apps %} {% for app in apps %}
   <div class="app">
-    {{app}}
+    <p>{{app.title}}</p>
+    <p>{{app.description}}</p>
   </div>
-  {% endfor %}
-
-  {% else %}
+  {% endfor %} {% else %}
   <div class="apps-empty">
     <p>No hay apps que mostrar</p>
   </div>
-  {% endif %}
-  {% include 'app/components/apps_form.html' %}
-</div> 
-
-
-{% endblock %}
+  {% endif %} {% include 'app/components/apps_form.html' %} {% endblock %}
+</div>
